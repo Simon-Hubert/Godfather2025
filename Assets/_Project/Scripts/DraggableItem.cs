@@ -1,18 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-public class DraggableItem : MonoBehaviour
+using System.Collections;
+public class Dragging : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Camera cam1;
+    [SerializeField] private float speed;
+    [SerializeField] private float f;
+    private Rigidbody rb;
+    Vector3 mousePosition;
+
+    private void Awake()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private Vector3 GetMousePos()
     {
-        
+        return cam1.WorldToScreenPoint(transform.position);
+    }
+    private void OnMouseDown()
+    {
+        mousePosition = Input.mousePosition - GetMousePos();
+    }
+    private void OnMouseDrag()
+    {
+        Vector3 direction = transform.position - cam1.ScreenToWorldPoint(Input.mousePosition - mousePosition);
+        Vector3 norm = direction;
+
+        rb.useGravity = false;
+        rb.velocity = rb.velocity * f;
+        rb.velocity += -direction * speed * Time.deltaTime;
+    }
+    private void OnMouseUp()
+    {
+        rb.useGravity = true;
     }
 }
