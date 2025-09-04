@@ -10,13 +10,12 @@ public class PatientManager : MonoBehaviour
     [SerializeField] private Patient PatientTimer;
     void Start()
     {
-        Patient Patient = Instantiate(RandomPatient, transform).GetComponent<Patient>();
-        Patient.Init(MainCanva);
+        CreatePatient();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CreatePatient()
     {
-        
+        Patient Patient = Instantiate(RandomPatient, transform).GetComponent<Patient>();
+        Patient.Init(MainCanva);
     }
 }

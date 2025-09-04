@@ -27,7 +27,6 @@ public class SickGenerator : MonoBehaviour
 
     public (Sickness, Sickness) GetRandomSickness()
     {
-        (Sickness, Sickness) returnSicknesses;
         AffectedPart parts = AffectedPart.None;
         Sickness sickness1 = Sicknesses[UnityEngine.Random.Range(0, Sicknesses.Length)];
         parts |= sickness1.AffectedParts;

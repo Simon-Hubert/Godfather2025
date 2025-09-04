@@ -5,16 +5,20 @@ using UnityEngine.UI;
 
 public class Patient : MonoBehaviour
 {
-    [SerializeField] Image TimerBarFill;
+    [SerializeField] private Image TimerBarFill;
     [SerializeField] private float MaxGameTime = 60f;
-    [SerializeField] GameObject prefabTimer;
+    [SerializeField] private GameObject prefabTimer;
+    [SerializeField] private Sprite DeadFace;
+    [SerializeField] private Sprite SavedFace;
     private float TimerValue;
     private bool isInside = false;
+    private bool isActive = true;
+    
     public void UpdateTimerDisplay(float RemainingTime)
     {
         if (TimerBarFill)
         {
-           TimerBarFill.fillAmount = RemainingTime / MaxGameTime; 
+            TimerBarFill.fillAmount = RemainingTime / MaxGameTime;
         }
     }
     public void Init(Canvas MainCanvas)
@@ -28,7 +32,10 @@ public class Patient : MonoBehaviour
     }
     void Update()
     {
-        TimerValue -= Time.deltaTime;
+        if (isActive)
+        {
+            TimerValue -= Time.deltaTime;
+        }
         UpdateTimerDisplay(TimerValue);
         if (Input.GetMouseButtonUp(0))
         {
@@ -37,6 +44,26 @@ public class Patient : MonoBehaviour
                 TestRecipe(null);
             }
         }
+        if (TimerValue <= 0f)
+        {
+            isActive = false;
+            StartCoroutine(NextPatient(0));
+        }
+        
+    }
+    IEnumerator NextPatient(int gain)
+    {
+        if (gain > 0)
+        {
+            GetComponent<PatientVisual>().EditFace(SavedFace);
+        }
+        else
+        {
+            GetComponent<PatientVisual>().EditFace(DeadFace);
+        }
+        yield return new WaitForSeconds(2.5f);
+        GetComponentInParent<PatientManager>().CreatePatient();
+        Destroy(gameObject);
     }
     void OnTriggerEnter(Collider other)
     {
@@ -48,13 +75,14 @@ public class Patient : MonoBehaviour
     }
     void TestRecipe(Collider other)
     {
+        //check si c'est une recette
+        int gain = 0;
         if (true)
         {
-            Debug.Log("Correct Recipe");
+            gain = 1;
+            //ajouter du score
         }
-        else
-        {
-            Debug.Log("Wrong Recipe");
-        }
+        isActive = false;
+        StartCoroutine(NextPatient(gain));
     }
 }

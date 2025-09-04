@@ -22,4 +22,20 @@ public class PatientVisual : MonoBehaviour
         srFace.sprite = faceSprites[Random.Range(0, faceSprites.Length)];
         srSkin.sprite = skinSprites[Random.Range(0, skinSprites.Length)];
     }
+    public void EditBody(Sprite newBody)
+    {
+        srBody.sprite = newBody;
+    }
+    public void EditHair(Sprite newHair)
+    {
+        srHair.sprite = newHair;
+    }
+    public void EditSkin(Sprite newSkin)
+    {
+        srSkin.sprite = newSkin;
+    }
+    public void EditFace(Sprite newFace)
+    {
+        srFace.sprite = newFace;
+    }
 }
