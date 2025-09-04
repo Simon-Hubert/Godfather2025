@@ -1,16 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ScoreStorage : MonoBehaviour
+public class ScoreManager : MonoBehaviour
 {
-    public void Score(int nouveauScore)
+    public static ScoreManager Instance;
+
+    private int score;
+
+    private void Awake()
     {
-        if (nouveauScore > PlayerPrefs.GetInt("HighScore", 0))
+        if (Instance == null)
         {
-            PlayerPrefs.SetInt("HighScore", nouveauScore);
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // si tu veux garder le score entre les scènes
         }
-        PlayerPrefs.SetInt("LastScore", nouveauScore);
-        PlayerPrefs.Save();
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void AddScore()
+    {
+        score += 1;
+        PlayerPrefs.SetInt("LastScore", score);
+        if (score > PlayerPrefs.GetInt("HighScore", 0))
+        {
+            PlayerPrefs.SetInt("HighScore", score);
+        }
     }
 }

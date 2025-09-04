@@ -59,6 +59,7 @@ public class Patient : MonoBehaviour
         if (gain > 0)
         {
             GetComponent<PatientVisual>().EditFace(SavedFace);
+            ScoreManager.Instance.AddScore();
         }
         else
         {
