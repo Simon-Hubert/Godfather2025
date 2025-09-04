@@ -5,6 +5,8 @@ public class Cauldron : MonoBehaviour
     private bool isCooking = false;
     private float cookTimer;
     public SOCurrentRecipe currentRecipe;
+    private bool isInside = false;
+    private Collider inside = null;
     void Update()
     {
         if (isCooking)
@@ -18,6 +20,19 @@ public class Cauldron : MonoBehaviour
                 checkRecipe(cookTimer);
             }
             cookTimer = 0f;
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            IngredientObject ingredient = inside.GetComponent<IngredientObject>();
+
+            if (ingredient != null)
+            {
+                currentRecipe.AddIngredient(ingredient.ingredientType);
+
+                Debug.Log("Ingredient " + ingredient.ingredientType);
+
+                Destroy(inside.gameObject);
+            }
         }
     }
     private void OnMouseDrag()
@@ -34,15 +49,16 @@ public class Cauldron : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        IngredientObject ingredient = other.GetComponent<IngredientObject>();
-
-        if (ingredient != null)
-        {
-            currentRecipe.AddIngredient(ingredient.ingredientType);
-
-            Debug.Log("Ingredient " + ingredient.ingredientType);
-
-            Destroy(other.gameObject);
-        }
+        
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        inside = other;
+        isInside = true;
+    }
+    void OnTriggerExit(Collider other)
+    {
+        inside = null;
+        isInside = false;
     }
 }
