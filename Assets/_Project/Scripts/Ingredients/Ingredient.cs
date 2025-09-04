@@ -11,6 +11,9 @@ public class Ingredient : MonoBehaviour
     [ShowNonSerializedField] private int _id;
     private bool _isInit;
 
+    public bool IsInit => _isInit;
+    
+
     public void Init(IngredientData data, int id) {
         _id = id;
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
