@@ -10,6 +10,8 @@ public class Cauldron : MonoBehaviour
     public SOCurrentRecipe currentRecipe;
     [SerializeField] private RecipeManager _recipeManager;
 
+    private bool isInside = false;
+    private Collider inside = null;
     void Update()
     {
         if (isCooking)
@@ -27,6 +29,19 @@ public class Cauldron : MonoBehaviour
 
                 }*/
         //Debug.Log("Cooked during " + cookTimer);
+        if (Input.GetMouseButtonUp(0))
+        {
+            IngredientObject ingredient = inside.GetComponent<IngredientObject>();
+
+            if (ingredient != null)
+            {
+                currentRecipe.AddIngredient(ingredient.ingredientType);
+
+                Debug.Log("Ingredient " + ingredient.ingredientType);
+
+                Destroy(inside.gameObject);
+            }
+        }
     }
     private void OnMouseDrag()
     {
@@ -49,7 +64,7 @@ public class Cauldron : MonoBehaviour
         {
             if (AreRecipesEqual(currentRecipe.currentIngredients, recipe.ingredients) && Mathf.Abs(cookTime - recipe.timer) <= 1f)
             {
-                //Debug.Log($"Recette réussie : {recipe.recipeName} avec {cookTime:F1}s de cuisson !");
+                //Debug.Log($"Recette rï¿½ussie : {recipe.recipeName} avec {cookTime:F1}s de cuisson !");
                 Debug.Log("win");
                 Instantiate(recipe.solution);
                 return;
@@ -67,15 +82,16 @@ public class Cauldron : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log(other.gameObject.name);
-        IngredientObject ingredient = other.GetComponent<IngredientObject>();
-
-        if (ingredient != null)
-        {
-            currentRecipe.AddIngredient(ingredient.ingredientType);
-
-            Debug.Log("Ingredient " + ingredient.ingredientType);
-
-            Destroy(other.gameObject);
-        }
+        
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        inside = other;
+        isInside = true;
+    }
+    void OnTriggerExit(Collider other)
+    {
+        inside = null;
+        isInside = false;
     }
 }
