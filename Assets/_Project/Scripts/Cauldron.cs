@@ -4,6 +4,7 @@ public class Cauldron : MonoBehaviour
 {
     private bool isCooking = false;
     private float cookTimer;
+    public SOCurrentRecipe currentRecipe;
     void Update()
     {
         if (isCooking)
@@ -30,5 +31,18 @@ public class Cauldron : MonoBehaviour
     private void checkRecipe(float cookTimer)
     {
         Debug.Log("Cooked for " + cookTimer + " seconds.");
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        IngredientObject ingredient = other.GetComponent<IngredientObject>();
+
+        if (ingredient != null)
+        {
+            currentRecipe.AddIngredient(ingredient.ingredientType);
+
+            Debug.Log("Ingredient " + ingredient.ingredientType);
+
+            Destroy(other.gameObject);
+        }
     }
 }
