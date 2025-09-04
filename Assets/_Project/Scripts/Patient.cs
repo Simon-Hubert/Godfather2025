@@ -7,15 +7,24 @@ public class Patient : MonoBehaviour
 {
     [SerializeField] Image TimerBarFill;
     [SerializeField] private float MaxGameTime = 60f;
+    [SerializeField] GameObject prefabTimer;
     private float TimerValue;
     private bool isInside = false;
     public void UpdateTimerDisplay(float RemainingTime)
     {
-        TimerBarFill.fillAmount = RemainingTime / MaxGameTime;
+        if (TimerBarFill)
+        {
+           TimerBarFill.fillAmount = RemainingTime / MaxGameTime; 
+        }
     }
-    void Start()
+    public void Init(Canvas MainCanvas)
     {
         TimerValue = MaxGameTime;
+        GameObject timer = Instantiate(prefabTimer, new Vector3(0,0,0), Quaternion.identity);
+        timer.transform.SetParent(MainCanvas.transform, false);
+        timer.transform.localScale = new Vector3(1, 1, 1);
+        timer.transform.localPosition = new Vector3(600, 350, 0);
+        TimerBarFill = timer.GetComponent<Timer>().TimerBarFill;
     }
     void Update()
     {
