@@ -8,5 +8,5 @@ public class SORecipe : ScriptableObject
     public string recipeName;
     public float timer;
     public GameObject solution;
-    public List<IngredientType> ingredients = new List<IngredientType>();
+    public List<int> ingredients = new List<int>();
 }

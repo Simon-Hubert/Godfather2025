@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/_Project/Scripts/DatabaseManager.cs.meta
+guid: 2ae9edf493aee284c817b1d713c9c113
+========
+guid: 2e83642fb4df1e84da63b2bcd4e1ad5f
+>>>>>>>> origin/Lilian:Assets/_Project/Scripts/PatientManager.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

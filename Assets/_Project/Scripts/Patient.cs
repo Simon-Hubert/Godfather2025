@@ -5,21 +5,37 @@ using UnityEngine.UI;
 
 public class Patient : MonoBehaviour
 {
-    [SerializeField] Image TimerBarFill;
+    [SerializeField] private Image TimerBarFill;
     [SerializeField] private float MaxGameTime = 60f;
+    [SerializeField] private GameObject prefabTimer;
+    [SerializeField] private Sprite DeadFace;
+    [SerializeField] private Sprite SavedFace;
     private float TimerValue;
     private bool isInside = false;
+    private bool isActive = true;
+    
     public void UpdateTimerDisplay(float RemainingTime)
     {
-        TimerBarFill.fillAmount = RemainingTime / MaxGameTime;
+        if (TimerBarFill)
+        {
+            TimerBarFill.fillAmount = RemainingTime / MaxGameTime;
+        }
     }
-    void Start()
+    public void Init(Canvas MainCanvas)
     {
         TimerValue = MaxGameTime;
+        GameObject timer = Instantiate(prefabTimer, new Vector3(0,0,0), Quaternion.identity);
+        timer.transform.SetParent(MainCanvas.transform, false);
+        timer.transform.localScale = new Vector3(1, 1, 1);
+        timer.transform.localPosition = new Vector3(600, 350, 0);
+        TimerBarFill = timer.GetComponent<Timer>().TimerBarFill;
     }
     void Update()
     {
-        TimerValue -= Time.deltaTime;
+        if (isActive)
+        {
+            TimerValue -= Time.deltaTime;
+        }
         UpdateTimerDisplay(TimerValue);
         if (Input.GetMouseButtonUp(0))
         {
@@ -28,6 +44,26 @@ public class Patient : MonoBehaviour
                 TestRecipe(null);
             }
         }
+        if (TimerValue <= 0f)
+        {
+            isActive = false;
+            StartCoroutine(NextPatient(0));
+        }
+        
+    }
+    IEnumerator NextPatient(int gain)
+    {
+        if (gain > 0)
+        {
+            GetComponent<PatientVisual>().EditFace(SavedFace);
+        }
+        else
+        {
+            GetComponent<PatientVisual>().EditFace(DeadFace);
+        }
+        yield return new WaitForSeconds(2.5f);
+        GetComponentInParent<PatientManager>().CreatePatient();
+        Destroy(gameObject);
     }
     void OnTriggerEnter(Collider other)
     {
@@ -39,13 +75,14 @@ public class Patient : MonoBehaviour
     }
     void TestRecipe(Collider other)
     {
+        //check si c'est une recette
+        int gain = 0;
         if (true)
         {
-            Debug.Log("Correct Recipe");
+            gain = 1;
+            //ajouter du score
         }
-        else
-        {
-            Debug.Log("Wrong Recipe");
-        }
+        isActive = false;
+        StartCoroutine(NextPatient(gain));
     }
 }
