@@ -5,11 +5,11 @@ using UnityEngine;
 public class SOCurrentRecipe : ScriptableObject
 {
     public float timer;
-    public List<IngredientType> currentIngredients = new List<IngredientType>();
+    public List<int> currentIngredients = new List<int>();
 
-    public void AddIngredient(IngredientType ingredient)
+    public void AddIngredient(int ingredientId)
     {
-        currentIngredients.Add(ingredient);
+        currentIngredients.Add(ingredientId);
     }
 
     public void ResetRecipe()

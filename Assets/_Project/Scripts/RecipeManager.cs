@@ -21,7 +21,7 @@ public class RecipeManager : MonoBehaviour
         Debug.Log("pas dans les recette");
     }
 
-    private bool AreRecipesEqual(List<IngredientType> current, List<IngredientType> target)
+    private bool AreRecipesEqual(List<int> current, List<int> target)
     {
         if (current.Count != target.Count) return false;
 

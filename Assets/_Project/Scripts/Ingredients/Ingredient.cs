@@ -12,6 +12,7 @@ public class Ingredient : IngredientObject
     private bool _isInit;
 
     public bool IsInit => _isInit;
+    public int Id => _id;
     
 
     public void Init(IngredientData data, int id) {
