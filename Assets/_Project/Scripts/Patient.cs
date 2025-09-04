@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +12,9 @@ public class Patient : MonoBehaviour
     [SerializeField] private GameObject prefabTimer;
     [SerializeField] private Sprite DeadFace;
     [SerializeField] private Sprite SavedFace;
+    [SerializeField] private PatientVisual visual;
+
+    [SerializeField] private Sickness _sickness;
     private float TimerValue;
     private bool isInside = false;
     private bool isActive = true;
@@ -21,13 +26,11 @@ public class Patient : MonoBehaviour
             TimerBarFill.fillAmount = RemainingTime / MaxGameTime;
         }
     }
-    public void Init(Canvas MainCanvas)
+    public void Init(Transform timerParent)
     {
         TimerValue = MaxGameTime;
         GameObject timer = Instantiate(prefabTimer, new Vector3(0,0,0), Quaternion.identity);
-        timer.transform.SetParent(MainCanvas.transform, false);
-        timer.transform.localScale = new Vector3(1, 1, 1);
-        timer.transform.localPosition = new Vector3(600, 350, 0);
+        timer.transform.SetParent(timerParent, false);
         TimerBarFill = timer.GetComponent<Timer>().TimerBarFill;
     }
     void Update()
@@ -84,5 +87,33 @@ public class Patient : MonoBehaviour
         }
         isActive = false;
         StartCoroutine(NextPatient(gain));
+    }
+    
+    public void SetSickness(Sickness sickness) {
+        switch (sickness.symptom1.AffectedParts) {
+            case AffectedPart.Head:
+                visual.EditFace(sickness.symptom1.Visual);
+                break;
+            case AffectedPart.Skin:
+                visual.EditBody(sickness.symptom1.Visual);
+                break;
+            default:
+                visual.SetSickness1(sickness.symptom1.Visual);
+                break;
+        }
+        
+        switch (sickness.symptom2.AffectedParts) {
+            case AffectedPart.Head:
+                visual.EditFace(sickness.symptom2.Visual);
+                break;
+            case AffectedPart.Skin:
+                visual.EditBody(sickness.symptom2.Visual);
+                break;
+            default:
+                visual.SetSickness2(sickness.symptom2.Visual);
+                break;
+        }
+
+        _sickness = sickness;
     }
 }

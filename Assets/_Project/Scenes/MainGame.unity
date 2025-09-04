@@ -269,6 +269,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6758938}
+  - {fileID: 1591799729}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1035,8 +1036,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1000000, y: 40000}
+  m_AnchoredPosition: {x: 0.089839, y: -0.08496094}
+  m_SizeDelta: {x: 450545, y: 21721}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1038542824
 MonoBehaviour:
@@ -1305,6 +1306,89 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 20, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &1318173962
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1318173964}
+  - component: {fileID: 1318173963}
+  - component: {fileID: 1318173965}
+  m_Layer: 0
+  m_Name: PatientManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1318173963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318173962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8228aba0b1edae049b5aa926e101c8fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RandomPatient: {fileID: 8194898667059454538, guid: 79c05f8039f24414eb09df3562f84a94,
+    type: 3}
+  PatientTimerParent: {fileID: 1591799729}
+  sickGenerator: {fileID: 1318173965}
+--- !u!4 &1318173964
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318173962}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1318173965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318173962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b618c5903e01aeb4d87201d4628de470, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sicknesses:
+  - Visual: {fileID: 21300000, guid: 02ac4afa16785d64184b3c8aff93b27a, type: 3}
+    Name: Boutons
+    AffectedParts: 2
+  - Visual: {fileID: 21300000, guid: 764eb100c75e12a4ab48909ea5b821e6, type: 3}
+    Name: Peau Rose
+    AffectedParts: 4
+  - Visual: {fileID: 21300000, guid: c47579bc9e4fa8f49bd363ece743c74d, type: 3}
+    Name: PeauBleue
+    AffectedParts: 4
+  - Visual: {fileID: 21300000, guid: e225bd6849f82c8449c826a27f1b20bd, type: 3}
+    Name: NezSang
+    AffectedParts: 8
+  - Visual: {fileID: 21300000, guid: 6f59a5b73259c6e44930b9cdaa020c97, type: 3}
+    Name: YeuxRouges1
+    AffectedParts: 1
+  - Visual: {fileID: 21300000, guid: e7271a8b66b61d04a825ffae885f361b, type: 3}
+    Name: YeuxRouges2
+    AffectedParts: 1
+  - Visual: {fileID: 21300000, guid: b6daa1deac126244d9dae8f0b4604ddb, type: 3}
+    Name: YeuxRouges3
+    AffectedParts: 1
 --- !u!1 &1549720925
 GameObject:
   m_ObjectHideFlags: 0
@@ -1352,6 +1436,41 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1591799728
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1591799729}
+  m_Layer: 5
+  m_Name: PatientTimerParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1591799729
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591799728}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 97824475}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 247.16833, y: 112.480225}
+  m_SizeDelta: {x: 279.2091, y: 51.6135}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1599304596
 GameObject:
   m_ObjectHideFlags: 0
@@ -1583,8 +1702,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 300000}
-  m_SizeDelta: {x: 1000000, y: 40000}
+  m_AnchoredPosition: {x: 3763.4, y: 110706.69}
+  m_SizeDelta: {x: 450544.8, y: 21720.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2024588675
 MonoBehaviour:
@@ -1681,3 +1800,4 @@ SceneRoots:
   - {fileID: 1549720927}
   - {fileID: 97824475}
   - {fileID: 662378540}
+  - {fileID: 1318173964}
