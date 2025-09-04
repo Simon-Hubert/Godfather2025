@@ -1,26 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PatientVisual : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer srBody;
     [SerializeField] private SpriteRenderer srHair;
     [SerializeField] private SpriteRenderer srFace;
+    [SerializeField] private SpriteRenderer srClothes;
     [SerializeField] private SpriteRenderer srSkin;
+    [SerializeField] private SpriteRenderer srSickness1;
+    [SerializeField] private SpriteRenderer srSickness2;
 
 
     [SerializeField] private Sprite[] bodySprites;
     [SerializeField] private Sprite[] hairSprites;
     [SerializeField] private Sprite[] faceSprites;
     [SerializeField] private Sprite[] skinSprites;
+    [SerializeField] private Sprite[] noseSprites;
+    [FormerlySerializedAs("skinSprites")] [SerializeField] private Sprite[] clothesSprites;
 
     private void Awake()
     {
         srBody.sprite = bodySprites[Random.Range(0, bodySprites.Length)];
         srHair.sprite = hairSprites[Random.Range(0, hairSprites.Length)];
         srFace.sprite = faceSprites[Random.Range(0, faceSprites.Length)];
-        srSkin.sprite = skinSprites[Random.Range(0, skinSprites.Length)];
+        srClothes.sprite = clothesSprites[Random.Range(0, clothesSprites.Length)];
+        if (Random.value < 0.75) {
+            srSkin.sprite = skinSprites[Random.Range(0, skinSprites.Length)];
+        }
+        if (Random.value < 0.1) {
+            srSickness1.sprite = noseSprites[Random.Range(0, noseSprites.Length)];
+        }
+        
     }
     public void EditBody(Sprite newBody)
     {
@@ -30,12 +43,25 @@ public class PatientVisual : MonoBehaviour
     {
         srHair.sprite = newHair;
     }
-    public void EditSkin(Sprite newSkin)
+    public void EditClothes(Sprite newSkin)
     {
-        srSkin.sprite = newSkin;
+        srClothes.sprite = newSkin;
     }
     public void EditFace(Sprite newFace)
     {
         srFace.sprite = newFace;
     }
+
+    public void EditSkin(Sprite newSkin) {
+        srSkin.sprite = newSkin;
+    }
+
+    public void SetSickness1(Sprite sprite) {
+        srSickness1.sprite = sprite;
+    }
+    
+    public void SetSickness2(Sprite sprite) {
+        srSickness2.sprite = sprite;
+    }
+    
 }

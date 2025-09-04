@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data:
   - _name: Plante
-    _sprite: {fileID: 21300000, guid: ffdf80dc342e69344b2dccafe04c30ee, type: 3}
-  - _name: Citron
-    _sprite: {fileID: 21300000, guid: daa49a1f06460a04b9827dd6f0bace08, type: 3}
-  - _name: Jus
-    _sprite: {fileID: 21300000, guid: 603d01d730be24147adda7897e463598, type: 3}
-  - _name: Fleur
-    _sprite: {fileID: 21300000, guid: 99d7e777338ab8f4ba890cc738794dba, type: 3}
+    _sprite: {fileID: 21300000, guid: 6a992c93701c7eb42abd6fbb1796b1cf, type: 3}
+  - _name: Fleur d'Hibiscus
+    _sprite: {fileID: 21300000, guid: c55b6f1616db9fa49b7c038d91977ba6, type: 3}
+  - _name: Citron Vert
+    _sprite: {fileID: 21300000, guid: 0b7b01064d3408948b953d183f434f98, type: 3}
+  - _name: Jus d'ananas
+    _sprite: {fileID: 21300000, guid: dbed17364060395448d3ba4cd1b3994a, type: 3}
+  - _name: Poisson Globe
+    _sprite: {fileID: 21300000, guid: 9b3147c7a8ff2cf4eaa473cc4e535629, type: 3}
   - _name: Grenouille
-    _sprite: {fileID: 21300000, guid: a14e6ee680df42f4c99bf69bc3d6b9ca, type: 3}
-  - _name: Poisson
-    _sprite: {fileID: 21300000, guid: 5de67bf0a3c601f4bab93b4fd3314ab1, type: 3}
+    _sprite: {fileID: 21300000, guid: df54174566034804785c56f9abd06c07, type: 3}
   - _name: Crane
-    _sprite: {fileID: 21300000, guid: 425970578f3342a43b40545d1ac8a25d, type: 3}
+    _sprite: {fileID: 21300000, guid: 8ab80b5efef2c1c499c522b4640f7203, type: 3}
