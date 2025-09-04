@@ -10,7 +10,7 @@ public class IngredientFactory : MonoBehaviour
     
     public Ingredient SpawnIngredient(Vector3 position, int id) {
         Ingredient ingredient = Instantiate(_ingredientPrefab, position, Quaternion.identity);
-        ingredient.Init(_database.Data[id], 0);
+        ingredient.Init(_database.Data[id], id);
         return ingredient;
     }
 }
