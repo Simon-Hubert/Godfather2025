@@ -12,7 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 077875f82b181f945a69e8208a3538c2, type: 3}
   m_Name: SOCurrentRecipe
   m_EditorClassIdentifier: 
-  ingredient1: 0
-  ingredient2: 0
-  ingredient3: 0
-  ingredient4: 0
+  timer: 0
+  currentIngredients: 0200000003000000000000000100000002000000

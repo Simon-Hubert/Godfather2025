@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 0
   recipeName: test
+  timer: 5
+  solution: {fileID: 6462666079522806562, guid: cb40caf025f6084418d5eac4fc29b11f,
+    type: 3}
   ingredients: 0000000001000000020000000200000003000000

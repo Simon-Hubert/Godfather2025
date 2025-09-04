@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-public class Dragging : MonoBehaviour
+public class DraggableItem : MonoBehaviour
 {
     [SerializeField] private Camera cam1;
     [SerializeField] private float speed;

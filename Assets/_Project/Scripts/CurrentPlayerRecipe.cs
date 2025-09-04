@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SORecipes", menuName = "Recipe/Player Recipe")]
 public class SOCurrentRecipe : ScriptableObject
 {
+    public float timer;
     public List<IngredientType> currentIngredients = new List<IngredientType>();
 
     public void AddIngredient(IngredientType ingredient)
