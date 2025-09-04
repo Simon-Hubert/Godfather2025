@@ -9,4 +9,5 @@ public class SORecipe : ScriptableObject
     public float timer;
     public GameObject solution;
     public List<int> ingredients = new List<int>();
+    public Sprite Sprite;
 }
