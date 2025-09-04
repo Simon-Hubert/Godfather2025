@@ -6,7 +6,7 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class Ingredient : MonoBehaviour
+public class Ingredient : IngredientObject
 {
     [ShowNonSerializedField] private int _id;
     private bool _isInit;
