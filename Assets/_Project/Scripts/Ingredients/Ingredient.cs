@@ -9,9 +9,6 @@ using UnityEngine;
 public class Ingredient : IngredientObject
 {
     [ShowNonSerializedField] private int _id;
-    private bool _isInit;
-
-    public bool IsInit => _isInit;
     public int Id => _id;
     
 
@@ -19,12 +16,5 @@ public class Ingredient : IngredientObject
         _id = id;
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
         sr.sprite = data.Sprite;
-        _isInit = true;
-    }
-
-    private void Start() {
-        if (!_isInit) {
-            Debug.Log("Ingredient not created via Factory");
-        }
     }
 }

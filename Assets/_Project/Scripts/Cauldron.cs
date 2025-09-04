@@ -11,7 +11,7 @@ public class Cauldron : MonoBehaviour
     [SerializeField] private RecipeManager _recipeManager;
 
     private bool isInside = false;
-    private Collider inside = null;
+    private Collider2D inside = null;
     void Update()
     {
         if (isCooking)
@@ -29,8 +29,9 @@ public class Cauldron : MonoBehaviour
 
                 }*/
         //Debug.Log("Cooked during " + cookTimer);
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && isInside)
         {
+            Debug.Log("Cauldron Clicked");
             Ingredient ingredient = inside.GetComponent<Ingredient>();
 
             if (ingredient != null)
@@ -80,13 +81,13 @@ public class Cauldron : MonoBehaviour
         return !target.Except(current).Any() && !current.Except(target).Any();
     }
     
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         inside = other;
         isInside = true;
     }
     
-    void OnTriggerExit(Collider other)
+    void OnTriggerExit2D(Collider2D other)
     {
         inside = null;
         isInside = false;
