@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 [Flags]
 public enum AffectedPart
@@ -17,9 +18,11 @@ public enum AffectedPart
 [Serializable]
 public struct Symptom
 {
-    public Sprite Visual;
-    public string Name;
+    public Sprite[] _visuals;
+    public Sprite Visual => _visuals[Random.Range(0, _visuals.Length)];
+
     public AffectedPart AffectedParts;
+    
 }
 
 [Serializable]
@@ -27,23 +30,19 @@ public struct Sickness
 {
     public Symptom symptom1;
     public Symptom symptom2;
+
+    public int DiseaseId;
+
+    public SORecipe Recipe1;
+    public SORecipe Recipe2;
+    public SORecipe Recipe3;
 }
 
 public class SickGenerator : MonoBehaviour
 {
-    [FormerlySerializedAs("Sicknesses")] [SerializeField] private Symptom[] _sicknesses;
+    [SerializeField] private Sickness[] _sicknesses;
     
     public Sickness GetRandomSickness() {
-        AffectedPart parts = AffectedPart.None;
-        Symptom sickness1 = _sicknesses[UnityEngine.Random.Range(0, _sicknesses.Length)];
-        parts |= sickness1.AffectedParts;
-        for (int i = 0; i < 1000; i++) {
-            Symptom sickness2 = _sicknesses[UnityEngine.Random.Range(0, _sicknesses.Length)];
-            if ((parts & sickness2.AffectedParts) == AffectedPart.None) {
-                return new Sickness(){symptom1 = sickness1, symptom2 = sickness2};
-            }
-        }
-
-        return new Sickness(){symptom1 =  _sicknesses[0], symptom2 = _sicknesses[1]};
+        return _sicknesses[Random.Range(0, _sicknesses.Length)];
     }
 }

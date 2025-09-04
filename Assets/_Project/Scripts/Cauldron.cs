@@ -1,17 +1,17 @@
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 public class Cauldron : MonoBehaviour
 {
     private bool isCooking = false;
     private float cookTimer;
     public SOCurrentRecipe currentRecipe;
     [SerializeField] private RecipeManager _recipeManager;
+    [SerializeField] private Transform _potionSpawn;
 
     private bool isInside = false;
     private Collider2D inside = null;
+    
     void Update()
     {
         if (isCooking)
@@ -68,11 +68,13 @@ public class Cauldron : MonoBehaviour
             {
                 //Debug.Log($"Recette r�ussie : {recipe.recipeName} avec {cookTime:F1}s de cuisson !");
                 Debug.Log("win");
-                Instantiate(recipe.solution);
+                Solution solution = Instantiate(recipe.solution, _potionSpawn.position, Quaternion.identity).GetComponent<Solution>();
+                solution.SetSprite(recipe.Sprite);
                 return;
             }
-            Debug.Log("Cooked during " + cookTimer);
         }
+        Debug.Log("Cooked during " + cookTimer);
+        this.currentRecipe.ResetRecipe();
     }
 
     private bool AreRecipesEqual(List<int> current, List<int> target)

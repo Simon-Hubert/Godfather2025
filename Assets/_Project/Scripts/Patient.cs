@@ -16,7 +16,7 @@ public class Patient : MonoBehaviour
 
     [SerializeField] private Sickness _sickness;
     private float TimerValue;
-    private bool isInside = false;
+    private Solution insideSol;
     private bool isActive = true;
     
     public void UpdateTimerDisplay(float RemainingTime)
@@ -42,12 +42,12 @@ public class Patient : MonoBehaviour
         UpdateTimerDisplay(TimerValue);
         if (Input.GetMouseButtonUp(0))
         {
-            if (isInside)
+            if (insideSol)
             {
-                TestRecipe(null);
+                TestRecipe();
             }
         }
-        if (TimerValue <= 0f)
+        if (TimerValue <= 0f && isActive)
         {
             isActive = false;
             StartCoroutine(NextPatient(0));
@@ -68,29 +68,36 @@ public class Patient : MonoBehaviour
         GetComponentInParent<PatientManager>().CreatePatient();
         Destroy(gameObject);
     }
-    void OnTriggerEnter(Collider other)
-    {
-        isInside = true;
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.CompareTag("Solution")) {
+            insideSol = other.GetComponent<Solution>();
+        }
     }
-    void OnTriggerExit(Collider other)
-    {
-        isInside = false;
+    
+    private void OnTriggerExit2D(Collider2D other) {
+        if (other.CompareTag("Solution")) {
+            insideSol = null;
+        }
     }
-    void TestRecipe(Collider other)
+
+    void TestRecipe()
     {
-        //check si c'est une recette
         int gain = 0;
-        if (true)
+        if (insideSol.diseaseId == _sickness.DiseaseId)
         {
             gain = 1;
-            //ajouter du score
         }
         isActive = false;
+        Destroy(insideSol.gameObject);
         StartCoroutine(NextPatient(gain));
     }
     
     public void SetSickness(Sickness sickness) {
         switch (sickness.symptom1.AffectedParts) {
+            case AffectedPart.Body:
+                visual.EditSkin(sickness.symptom1.Visual);
+                break;
             case AffectedPart.Head:
                 visual.EditFace(sickness.symptom1.Visual);
                 break;
@@ -103,6 +110,9 @@ public class Patient : MonoBehaviour
         }
         
         switch (sickness.symptom2.AffectedParts) {
+            case AffectedPart.Body:
+                visual.EditSkin(sickness.symptom2.Visual);
+                break;
             case AffectedPart.Head:
                 visual.EditFace(sickness.symptom2.Visual);
                 break;
