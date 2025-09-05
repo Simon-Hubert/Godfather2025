@@ -26,4 +26,4 @@ MonoBehaviour:
   - _name: Grenouille
     _sprite: {fileID: 21300000, guid: df54174566034804785c56f9abd06c07, type: 3}
   - _name: Crane
-    _sprite: {fileID: 21300000, guid: 8ab80b5efef2c1c499c522b4640f7203, type: 3}
+    _sprite: {fileID: 21300000, guid: 9773de5cb1c312d409a999d10ee3a506, type: 3}
