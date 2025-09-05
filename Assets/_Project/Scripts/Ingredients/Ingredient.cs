@@ -17,4 +17,7 @@ public class Ingredient : IngredientObject
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
         sr.sprite = data.Sprite;
     }
+    public void AddInitialVelocity(Vector2 initialVelocity) {
+        GetComponent<Rigidbody2D>().velocity = initialVelocity;
+    }
 }
