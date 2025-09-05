@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
+using UnityEngine.VFX;
 public class Cauldron : MonoBehaviour
 {
     private bool isCooking = false;
@@ -8,6 +10,12 @@ public class Cauldron : MonoBehaviour
     public SOCurrentRecipe currentRecipe;
     [SerializeField] private RecipeManager _recipeManager;
     [SerializeField] private Transform _potionSpawn;
+
+    [Header("FX & Sprite")]
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private List<Color> spriteColors;
+    [SerializeField, GradientUsage(true)] private List<Gradient> gradientsBubble;
+    [SerializeField] private VisualEffect vfx;
 
     private bool isInside = false;
     private Collider2D inside = null;
@@ -93,6 +101,16 @@ public class Cauldron : MonoBehaviour
     {
         inside = other;
         isInside = true;
+
+        if (spriteRenderer != null && spriteColors.Count > 0 && gradientsBubble.Count > 0)
+        {
+            int index = Random.Range(0, Mathf.Min(spriteColors.Count, gradientsBubble.Count));
+            spriteRenderer.color = spriteColors[index];
+            if (vfx != null)
+            {
+                vfx.SetGradient("MainColorGradient", gradientsBubble[index]);
+            }
+        }
     }
     
     void OnTriggerExit2D(Collider2D other)

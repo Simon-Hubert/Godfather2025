@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class Patient : MonoBehaviour
 {
     [SerializeField] private Image TimerBarFill;
+    [SerializeField] private Image TimerBarOutline;
     [SerializeField] private float MaxGameTime = 60f;
     [SerializeField] private GameObject prefabTimer;
     [SerializeField] private Sprite DeadFace;
@@ -18,20 +19,35 @@ public class Patient : MonoBehaviour
     private float TimerValue;
     private Solution insideSol;
     private bool isActive = true;
-    
+
     public void UpdateTimerDisplay(float RemainingTime)
     {
         if (TimerBarFill)
         {
             TimerBarFill.fillAmount = RemainingTime / MaxGameTime;
         }
+        if (RemainingTime / MaxGameTime < 0.4f)
+        {
+            if (TimerBarOutline)
+            {
+                TimerBarOutline.color = Color.red;
+            }
+        }
+        else
+        {
+            if (TimerBarOutline)
+            {
+                TimerBarOutline.color = new Color32(179, 140, 70, 255);
+            }
+        }
     }
     public void Init(Transform timerParent)
     {
         TimerValue = MaxGameTime;
-        GameObject timer = Instantiate(prefabTimer, new Vector3(0,0,0), Quaternion.identity);
+        GameObject timer = Instantiate(prefabTimer, new Vector3(0, 0, 0), Quaternion.identity);
         timer.transform.SetParent(timerParent, false);
         TimerBarFill = timer.GetComponent<Timer>().TimerBarFill;
+        TimerBarOutline = timer.GetComponent<Timer>().TimerBarOutline;
     }
     void Update()
     {
