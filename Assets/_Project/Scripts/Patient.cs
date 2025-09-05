@@ -14,6 +14,10 @@ public class Patient : MonoBehaviour
     [SerializeField] private Sprite DeadFace;
     [SerializeField] private Sprite SavedFace;
     [SerializeField] private PatientVisual visual;
+    [SerializeField] private Animator animator;
+    [SerializeField] private float moveThreshold = 0.01f;
+    private Vector3 lastPosition;
+    private bool lastIsMoving;
 
     [SerializeField] private Sickness _sickness;
 
@@ -23,6 +27,11 @@ public class Patient : MonoBehaviour
     private Solution insideSol;
     private bool isActive = true;
 
+    void Start()
+    {
+        if (animator == null) animator = GetComponentInChildren<Animator>();
+        lastPosition = transform.position;
+    }
     public void UpdateTimerDisplay(float RemainingTime)
     {
         if (TimerBarFill)
@@ -56,6 +65,17 @@ public class Patient : MonoBehaviour
     
     void Update()
     {
+        Vector3 delta = transform.position - lastPosition;
+        float speed = delta.magnitude / Mathf.Max(Time.deltaTime, 1e-6f);
+        bool isMoving = speed > moveThreshold;
+
+        if (animator != null && isMoving != lastIsMoving)
+        {
+            animator.SetBool("isMoving", isMoving);
+            lastIsMoving = isMoving;
+        }
+
+        lastPosition = transform.position;
         if (isActive)
         {
             TimerValue -= Time.deltaTime;
