@@ -675,7 +675,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimerBarFill: {fileID: 0}
   TimerBarOutline: {fileID: 0}
-  MaxGameTime: 10
+  MaxGameTime: 50
   prefabTimer: {fileID: 7154814030791664852, guid: ab0973adad69ba342aa7d656d3dd8270,
     type: 3}
   DeadFace: {fileID: 21300000, guid: 7bb4535053ef93f409057a53a10c7a68, type: 3}

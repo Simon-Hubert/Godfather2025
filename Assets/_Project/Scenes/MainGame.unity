@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimerBarFill: {fileID: 1038542824}
-  MaxGameTime: 120
+  MaxGameTime: 180
   nextScene: {fileID: 244795110}
 --- !u!1 &40691964
 GameObject:
