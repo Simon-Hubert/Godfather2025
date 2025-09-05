@@ -10,6 +10,8 @@ public class PatientManager : MonoBehaviour
     [SerializeField] private SickGenerator sickGenerator;
 
     [SerializeField] private LootBox lootBox;
+
+    [SerializeField] private Background _bg;
     
     void Start()
     {
@@ -19,7 +21,7 @@ public class PatientManager : MonoBehaviour
     public void CreatePatient()
     {
         Patient Patient = Instantiate(RandomPatient, transform).GetComponent<Patient>();
-        Patient.Init(PatientTimerParent);
+        Patient.Init(PatientTimerParent, _bg);
         Sickness sickness = sickGenerator.GetRandomSickness();
         Patient.SetSickness(sickness);
         lootBox.Open(sickness);

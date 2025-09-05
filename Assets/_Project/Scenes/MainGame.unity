@@ -906,6 +906,7 @@ GameObject:
   m_Component:
   - component: {fileID: 609224764}
   - component: {fileID: 609224763}
+  - component: {fileID: 609224765}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -980,6 +981,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2062351878}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &609224765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609224762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7fe730bdda93e34bbf2f867a67f0e36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bgNormal: {fileID: 21300000, guid: 9a405315c127c6b44999ae20d2368f19, type: 3}
+  _bgFanta: {fileID: 21300000, guid: 75061fd874431a44098a5237a3fa345c, type: 3}
 --- !u!1 &650683476
 GameObject:
   m_ObjectHideFlags: 0
@@ -2906,6 +2921,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 466a9daa71e8e394eb93b629cc6eb649,
         type: 2}
+    - target: {fileID: 6980292540322465574, guid: b5d4c2999bd608943b0defe57b2b0e99,
+        type: 3}
+      propertyPath: _bg
+      value: 
+      objectReference: {fileID: 609224765}
     - target: {fileID: 6980292540322465574, guid: b5d4c2999bd608943b0defe57b2b0e99,
         type: 3}
       propertyPath: lootBox

@@ -83,6 +83,9 @@ public class Cauldron : MonoBehaviour
                 AudioManager.Instance?.PlaySFX(4);
                 Solution solution = Instantiate(recipe.solution, _potionSpawn.position, Quaternion.identity).GetComponent<Solution>();
                 solution.SetSprite(recipe.Sprite);
+                if (recipe.Id == 14) {
+                    solution.OnFantaDeFrancko();
+                }
                 return;
             }
         }

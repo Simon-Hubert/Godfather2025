@@ -16,6 +16,9 @@ public class Patient : MonoBehaviour
     [SerializeField] private PatientVisual visual;
 
     [SerializeField] private Sickness _sickness;
+
+    private Background _background;
+    
     private float TimerValue;
     private Solution insideSol;
     private bool isActive = true;
@@ -41,14 +44,16 @@ public class Patient : MonoBehaviour
             }
         }
     }
-    public void Init(Transform timerParent)
+    public void Init(Transform timerParent, Background background)
     {
         TimerValue = MaxGameTime;
         GameObject timer = Instantiate(prefabTimer, new Vector3(0, 0, 0), Quaternion.identity);
         timer.transform.SetParent(timerParent, false);
         TimerBarFill = timer.GetComponent<Timer>().TimerBarFill;
         TimerBarOutline = timer.GetComponent<Timer>().TimerBarOutline;
+        _background = background;
     }
+    
     void Update()
     {
         if (isActive)
@@ -85,6 +90,7 @@ public class Patient : MonoBehaviour
         }
         yield return new WaitForSeconds(2.5f);
         GetComponentInParent<PatientManager>().CreatePatient();
+        StopFanta();
         Destroy(gameObject);
     }
 
@@ -108,10 +114,22 @@ public class Patient : MonoBehaviour
             gain = 1;
         }
         isActive = false;
+        if (insideSol.isFantaDeFrancko) {
+            StartFanta();
+        }
         Destroy(insideSol.gameObject);
         StartCoroutine(NextPatient(gain));
     }
     
+    private void StartFanta() {
+        _background.StartFanta();
+    }
+    
+    private void StopFanta() {
+        _background.EndFanta();
+    }
+
+
     public void SetSickness(Sickness sickness) {
         switch (sickness.symptom1.AffectedParts) {
             case AffectedPart.Body:
