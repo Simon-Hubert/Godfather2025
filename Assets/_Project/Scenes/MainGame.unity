@@ -2448,6 +2448,7 @@ GameObject:
   - component: {fileID: 1835054857}
   - component: {fileID: 1835054856}
   - component: {fileID: 1835054859}
+  - component: {fileID: 1835054860}
   m_Layer: 0
   m_Name: Cauldron_Empty
   m_TagString: Untagged
@@ -2729,6 +2730,38 @@ CircleCollider2D:
   m_Offset: {x: -0, y: -2.2}
   serializedVersion: 2
   m_Radius: 2.6
+--- !u!114 &1835054860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835054855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 169fb24fa1396c546a7bc7ff5017cafa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentRecipe: {fileID: 11400000, guid: 19fe610073e788040bd973aa2ca09fc8, type: 2}
+  allRecipes:
+  - {fileID: 11400000, guid: c72028d7a8ca6094ea03e13936cbf539, type: 2}
+  - {fileID: 11400000, guid: 485de12ccd92e9b4fbd8fa3bde3c1f18, type: 2}
+  - {fileID: 11400000, guid: d114a4479ac0cd24a84be5d8f79eeba1, type: 2}
+  - {fileID: 11400000, guid: d493d6e96c1e67540ab1f5476dfcfa23, type: 2}
+  - {fileID: 11400000, guid: bd44e1f21d76a1d429c69d85cce19b19, type: 2}
+  - {fileID: 11400000, guid: 368060ca54882f64784d70158aa81065, type: 2}
+  - {fileID: 11400000, guid: 0f41950119505a44685f696a392fad4c, type: 2}
+  - {fileID: 11400000, guid: 90c7af023647f454ba26519125762644, type: 2}
+  - {fileID: 11400000, guid: efffe5578bcc0d74bbcdceae24170e29, type: 2}
+  - {fileID: 11400000, guid: 650d57705a7191b439d8c2d5981404b7, type: 2}
+  - {fileID: 11400000, guid: 35d7d33b72efbf24abafc98623e9751d, type: 2}
+  - {fileID: 11400000, guid: 4555822945ab37442a471903acb4a910, type: 2}
+  - {fileID: 11400000, guid: 4932daacfd1a7844aa3fd5ac27bdbfee, type: 2}
+  - {fileID: 11400000, guid: 967360cf12964e04b883a3ec67c292e7, type: 2}
+  - {fileID: 11400000, guid: d02e6b5de2cd3d04abde8abcffc4b16f, type: 2}
+  - {fileID: 11400000, guid: 1cbd5b97d6d25ce4da0d7c6e7fb92a4e, type: 2}
+  - {fileID: 11400000, guid: 9099d51868de4204988ef125b71e937c, type: 2}
+  - {fileID: 11400000, guid: 466a9daa71e8e394eb93b629cc6eb649, type: 2}
 --- !u!1 &1890444461
 GameObject:
   m_ObjectHideFlags: 0
