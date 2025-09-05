@@ -17,6 +17,8 @@ public class Cauldron : MonoBehaviour
     [SerializeField, GradientUsage(true)] private List<Gradient> gradientsBubble;
     [SerializeField] private VisualEffect vfx;
 
+    [SerializeField] private Animator animator;
+
     private bool isInside = false;
     private Collider2D inside = null;
     
@@ -60,10 +62,12 @@ public class Cauldron : MonoBehaviour
     private void OnMouseDrag()
     {
         isCooking = true;
+        animator.SetBool("isCooking", true);
     }
     private void OnMouseUp()
     {
         isCooking = false;
+        animator.SetBool("isCooking", false);
 
         if (cookTimer > 0f)
         {
