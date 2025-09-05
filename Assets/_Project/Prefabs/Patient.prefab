@@ -655,7 +655,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.55, y: 1.55, z: 1.55}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 794483228739204439}
@@ -674,6 +674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimerBarFill: {fileID: 0}
+  TimerBarOutline: {fileID: 0}
   MaxGameTime: 10
   prefabTimer: {fileID: 7154814030791664852, guid: ab0973adad69ba342aa7d656d3dd8270,
     type: 3}
