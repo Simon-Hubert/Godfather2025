@@ -37,6 +37,7 @@ public class Cauldron : MonoBehaviour
             if (ingredient != null)
             {
                 currentRecipe.AddIngredient(ingredient.Id);
+                AudioManager.Instance.PlaySFX(0);
 
                 Debug.Log("Ingredient " + ingredient.Id);
 
@@ -44,7 +45,10 @@ public class Cauldron : MonoBehaviour
             }
         }
     }
-    
+    private void OnMouseDown()
+    {
+        AudioManager.Instance.PlaySFX(5);
+    }
     private void OnMouseDrag()
     {
         isCooking = true;
@@ -68,12 +72,14 @@ public class Cauldron : MonoBehaviour
             {
                 //Debug.Log($"Recette r�ussie : {recipe.recipeName} avec {cookTime:F1}s de cuisson !");
                 Debug.Log("win");
+                AudioManager.Instance.PlaySFX(4);
                 Solution solution = Instantiate(recipe.solution, _potionSpawn.position, Quaternion.identity).GetComponent<Solution>();
                 solution.SetSprite(recipe.Sprite);
                 return;
             }
         }
         Debug.Log("Cooked during " + cookTimer);
+        
         this.currentRecipe.ResetRecipe();
     }
 

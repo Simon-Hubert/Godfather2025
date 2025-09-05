@@ -1,7 +1,9 @@
+using System;
 using System.Linq;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 public class LootBox : MonoBehaviour
 {
@@ -11,25 +13,27 @@ public class LootBox : MonoBehaviour
     [SerializeField, ReadOnly] private Ingredient[] _ingredients = new Ingredient[5];
     
     [SerializeField] private UnityEvent _onOpenLootBox;
+    public event Action OnOpenLootBox;
     
     [Button]
     public void Open() {
         DestroyAllRemainingIngredients();
-        for (int i=0; i < _spawnPoints.Length; i++) {
-            _ingredients[i] =  _factory.SpawnIngredient(_spawnPoints[i].position, GetRandomIngredient());
+        for (int i = 0; i < _spawnPoints.Length; i++)
+        {
+            _ingredients[i] = _factory.SpawnIngredient(_spawnPoints[i].position, GetRandomIngredient());
         }
-        _onOpenLootBox?.Invoke();
     }
     
     private int GetRandomIngredient() {
         return Random.Range(0, _database.Data.Length);
     }
-    
-    public void Open(Sickness sickness) {
+
+    public void Open(Sickness sickness)
+    {
         DestroyAllRemainingIngredients();
         _spawnPoints = _spawnPoints.OrderBy(x => Random.value).ToArray();
-        
-        
+
+
         SORecipe recipe = Random.Range(0, 3) switch
         {
             0 => sickness.Recipe1,
@@ -37,16 +41,20 @@ public class LootBox : MonoBehaviour
             2 => sickness.Recipe3,
             _ => sickness.Recipe1
         };
-        
+
         int forcedItems = recipe.ingredients.Count;
-        
-        for (int i = 0; i < forcedItems; i++) {
+
+        for (int i = 0; i < forcedItems; i++)
+        {
             _ingredients[i] = _factory.SpawnIngredient(_spawnPoints[i].position, recipe.ingredients[i]);
         }
-        
-        for (int i = forcedItems; i < 5; i++) {
+
+        for (int i = forcedItems; i < 5; i++)
+        {
             _ingredients[i] = _factory.SpawnIngredient(_spawnPoints[i].position, GetRandomIngredient());
         }
+        _onOpenLootBox?.Invoke();
+        OnOpenLootBox?.Invoke();
     }
 
     private void DestroyAllRemainingIngredients() {

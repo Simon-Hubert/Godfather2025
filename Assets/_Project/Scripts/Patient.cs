@@ -60,10 +60,12 @@ public class Patient : MonoBehaviour
         {
             GetComponent<PatientVisual>().EditFace(SavedFace);
             ScoreManager.Instance.AddScore();
+            AudioManager.Instance.PlaySFX(3);
         }
         else
         {
             GetComponent<PatientVisual>().EditFace(DeadFace);
+            AudioManager.Instance.PlaySFX(2);
         }
         yield return new WaitForSeconds(2.5f);
         GetComponentInParent<PatientManager>().CreatePatient();
