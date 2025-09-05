@@ -75,13 +75,13 @@ public class Patient : MonoBehaviour
         if (gain > 0)
         {
             GetComponent<PatientVisual>().EditFace(SavedFace);
-            ScoreManager.Instance.AddScore();
-            AudioManager.Instance.PlaySFX(3);
+            ScoreManager.Instance?.AddScore();
+            AudioManager.Instance?.PlaySFX(3);
         }
         else
         {
             GetComponent<PatientVisual>().EditFace(DeadFace);
-            AudioManager.Instance.PlaySFX(2);
+            AudioManager.Instance?.PlaySFX(2);
         }
         yield return new WaitForSeconds(2.5f);
         GetComponentInParent<PatientManager>().CreatePatient();

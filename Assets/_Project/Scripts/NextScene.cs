@@ -17,4 +17,8 @@ public class NextScene : MonoBehaviour
             SceneManager.LoadScene(0);
         }
     }
+
+    public void PassScene(string SceneName) {
+        SceneManager.LoadScene(SceneName);
+    }
 }

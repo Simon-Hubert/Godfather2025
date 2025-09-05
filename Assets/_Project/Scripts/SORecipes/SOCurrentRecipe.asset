@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SOCurrentRecipe
   m_EditorClassIdentifier: 
   timer: 0
-  currentIngredients: 
+  currentIngredients: 0600000003000000020000000500000006000000

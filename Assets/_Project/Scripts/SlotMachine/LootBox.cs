@@ -13,6 +13,9 @@ public class LootBox : MonoBehaviour
     [SerializeField, ReadOnly] private Ingredient[] _ingredients = new Ingredient[5];
     
     [SerializeField] private UnityEvent _onOpenLootBox;
+
+    [SerializeField] private float _initialVelocity;
+    [SerializeField] private Vector2[] _dirs;
     public event Action OnOpenLootBox;
     
     [Button]
@@ -60,6 +63,13 @@ public class LootBox : MonoBehaviour
     private void DestroyAllRemainingIngredients() {
         foreach (Ingredient ingredient in _ingredients) {
             if (ingredient != null) Destroy(ingredient.gameObject);
+        }
+    }
+
+    public void AddInitialVelocity() {
+        for (int i = 0; i < _ingredients.Length; i++) {
+            
+            _ingredients[i].AddInitialVelocity(_dirs[i] * _initialVelocity);
         }
     }
 }
