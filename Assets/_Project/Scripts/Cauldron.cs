@@ -95,7 +95,7 @@ public class Cauldron : MonoBehaviour
         }
         Debug.Log("Cooked during " + cookTimer);
         
-        this.currentRecipe.ResetRecipe();
+        //this.currentRecipe.ResetRecipe();
     }
 
     private bool AreRecipesEqual(List<int> current, List<int> target)
