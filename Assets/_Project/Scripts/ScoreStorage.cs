@@ -4,7 +4,7 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance;
 
-    private int score;
+    public int score;
 
     private void Awake()
     {
@@ -27,5 +27,9 @@ public class ScoreManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("HighScore", score);
         }
+    }
+    public void SetScore()
+    {
+        score = 0;
     }
 }

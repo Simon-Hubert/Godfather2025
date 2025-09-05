@@ -10,7 +10,7 @@ public class LootBox : MonoBehaviour
     [SerializeField] private IngredientDatabase _database;
     [SerializeField] private IngredientFactory _factory;
     [SerializeField] private Transform[] _spawnPoints;
-    [SerializeField, ReadOnly] private Ingredient[] _ingredients = new Ingredient[5];
+    [SerializeField, ReadOnly] private Ingredient[] _ingredients = new Ingredient[7];
     
     [SerializeField] private UnityEvent _onOpenLootBox;
 
@@ -52,7 +52,7 @@ public class LootBox : MonoBehaviour
             _ingredients[i] = _factory.SpawnIngredient(_spawnPoints[i].position, recipe.ingredients[i]);
         }
 
-        for (int i = forcedItems; i < 5; i++)
+        for (int i = forcedItems; i < 7; i++)
         {
             _ingredients[i] = _factory.SpawnIngredient(_spawnPoints[i].position, GetRandomIngredient());
         }
