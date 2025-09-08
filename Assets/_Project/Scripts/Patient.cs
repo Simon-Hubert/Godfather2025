@@ -16,6 +16,7 @@ public class Patient : MonoBehaviour
     [SerializeField] private PatientVisual visual;
     [SerializeField] private Animator animator;
     [SerializeField] private float moveThreshold = 0.01f;
+    public SOCurrentRecipe currentRecipe;
     private Vector3 lastPosition;
     private bool lastIsMoving;
 
@@ -111,6 +112,7 @@ public class Patient : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
         GetComponentInParent<PatientManager>().CreatePatient();
         StopFanta();
+        this.currentRecipe.ResetRecipe();
         Destroy(gameObject);
     }
 

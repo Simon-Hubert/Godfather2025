@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimerBarFill: {fileID: 1038542824}
-  MaxGameTime: 180
+  MaxGameTime: 300
   nextScene: {fileID: 244795110}
 --- !u!1 &40691964
 GameObject:
@@ -2770,7 +2770,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4555822945ab37442a471903acb4a910, type: 2}
   - {fileID: 11400000, guid: 4932daacfd1a7844aa3fd5ac27bdbfee, type: 2}
   - {fileID: 11400000, guid: 967360cf12964e04b883a3ec67c292e7, type: 2}
-  - {fileID: 11400000, guid: d02e6b5de2cd3d04abde8abcffc4b16f, type: 2}
+  - {fileID: 11400000, guid: 967360cf12964e04b883a3ec67c292e7, type: 2}
   - {fileID: 11400000, guid: 1cbd5b97d6d25ce4da0d7c6e7fb92a4e, type: 2}
   - {fileID: 11400000, guid: 9099d51868de4204988ef125b71e937c, type: 2}
   - {fileID: 11400000, guid: 466a9daa71e8e394eb93b629cc6eb649, type: 2}
@@ -3125,7 +3125,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _sicknesses.Array.data[4].Recipe3
       value: 
-      objectReference: {fileID: 11400000, guid: d02e6b5de2cd3d04abde8abcffc4b16f,
+      objectReference: {fileID: 11400000, guid: 967360cf12964e04b883a3ec67c292e7,
         type: 2}
     - target: {fileID: 3808006165555623515, guid: b5d4c2999bd608943b0defe57b2b0e99,
         type: 3}

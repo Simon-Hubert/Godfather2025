@@ -17,5 +17,5 @@ MonoBehaviour:
   timer: 10
   solution: {fileID: 3286356721400595840, guid: 86641718aa01447499372cfcaa7ac088,
     type: 3}
-  ingredients: 06000000030000000300000004000000
+  ingredients: 0600000003000000030000000400000004000000
   Sprite: {fileID: 21300000, guid: 43acb32ba2a8d5b4b90bacbd3609fa51, type: 3}
